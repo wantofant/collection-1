@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound wavesurfer</title>
+</head>
+<body>
+    <script type="module" src="app.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+    <div id="waveform">
+        <script>var wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            barWidth: 3,
+            progressColor: 'orange',
+            cursorColor: 'transparent', 
+            waveColor: 'black',
+            });
+       
+        wavesurfer.load('NCS-1.mp3');
+        wavesurfer.on('ready', function () {
+        document.getElementById("msg").innerText = 'Ready '
+        });
+
+        wavesurfer.on('audioprocess', function () {
+        document.getElementById("msg").innerText = 'Audio Process ' + wavesurfer.getCurrentTime()
+        });
+
+        wavesurfer.on('pause', function () {
+        document.getElementById("msg").innerText = 'Pause'
+        });
+        </script>
+        <button onclick="wavesurfer.play()">Play</button>
+        <button onclick="wavesurfer.pause()">Pause</button>
+        <button onclick="wavesurfer.stop()">Stop</button>
+        <button onclick="wavesurfer.playPause()">Play/Pause</button>
+    </div>
+    <br><br><br><br>
+    <div id="waveform1">
+        <script>var wavesurfer1 = WaveSurfer.create({
+            container: '#waveform1',
+            barWidth: 3,
+            progressColor: 'red',
+            cursorColor: 'transparent', 
+            waveColor: 'yellow',
+            });
+
+        wavesurfer1.load('NCS-2.mp3');
+        wavesurfer1.on('ready', function () {
+        document.getElementById("msg").innerText = 'Ready '
+        });
+
+        wavesurfer1.on('audioprocess', function () {
+        document.getElementById("msg").innerText = 'Audio Process ' + wavesurfer.getCurrentTime()
+        });
+
+        wavesurfer1.on('pause', function () {
+        document.getElementById("msg").innerText = 'Pause'
+        });
+        </script>
+        <button onclick="wavesurfer1.play()">Play</button>
+        <button onclick="wavesurfer1.pause()">Pause</button>
+        <button onclick="wavesurfer1.stop()">Stop</button>
+        <button onclick="wavesurfer1.playPause()">Play/Pause</button>
+    </div>
+</body>
+</html>
